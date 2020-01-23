@@ -13,6 +13,7 @@
 ### ERD
 
 ![Customers View](./ERD-CustomerSView.png)
+![Customers View](./CustomerOrderView/ESP-CustomerOrderView.png)
 
 ## Customer Orders View
 
