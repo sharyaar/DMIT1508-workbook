@@ -117,3 +117,40 @@ GO  -- I have to break the above code as a seperate batch from the following cod
 ALTER TABLE Students
 	ADD CONSTRAINT CK_Students_PostalCode
 		CHECK (PostalCode LIKE '[A-Z][0-9][A-Z][0-9][A-Z][0-9]')
+-- 3) Add a default constraint for the Status column of StudentCources
+--	Set 'E' as the default value
+ALTER TABLE StudentCourses
+	ADD CONSTRAINT DF_StudentCourses_Status
+		DEFAULT ('E') FOR [Status] -- In an Alter Table statement, the column must be specified for default value
+
+GO
+
+/* ----- Other Odds and Ends ---- */
+sp_help Students -- Get schema information for the Students table
+
+-- In a table, we can have some columns be "calculated" or "derived" columns
+-- where the value of the column is a calculation from other columns
+CREATE TABLE Invoice 
+(
+	InvoiceId		int			NOT NULL,
+	Subtotal		money		NOT NULL,
+	GST				money		NOT NULL,
+	Total			AS Subtotal + GST	-- This is a Computed Column
+	
+)
+
+/* 
+SELECT - The data/columns to retrieve 
+
+FROM   - The table(s) to search
+
+WHERE  - Filters to apply in the search
+
+GROUP BY  - Re-Organizing Results into group )- Aggregation(getting min, max, sorting ...)
+
+HAVING - Filter for grouping
+
+ORDER BY  - Sorting results
+*/ 
+
+			
