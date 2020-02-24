@@ -1,0 +1,18 @@
+SELECT
+FROM
+WHERE	- Filters the results -Conditional Expressions
+GROUP BY 
+HAVING
+ORDER BY
+
+Relational Expressions:
+=
+>
+>=
+<=
+<>
+
+Arithemic Operators / Logical Operators
+AND
+OR
+NOT
