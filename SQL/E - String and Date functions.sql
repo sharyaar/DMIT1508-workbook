@@ -91,10 +91,12 @@ WHERE   Mark IS NOT NULL
   AND   LEFT(Semester, 4) = 2004
 
 -- 6. select last three characters of all the courses
-
+SELECT LEFT(CourseName, 3) AS 'Last 3 Characters'
+FROM   Course
 
 -- 7. Select the characters in the position description from characters 8 to 13 for PositionID 5
-
+SELECT SUBSTRING(PositionDescription,8,13)
+FROM   Position
 
 -- 8. Select all the Student First Names as upper case.
 

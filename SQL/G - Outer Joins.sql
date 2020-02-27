@@ -31,6 +31,7 @@ FROM    Student S
         ON S.StudentID  = R.StudentID
 GROUP BY FirstName, LastName
 
+
 --4. Select the highest and lowest mark for each student. 
 SELECT  FirstName  + ' ' + LastName AS 'Student Name',
         MAX(Mark) AS 'Highest',
