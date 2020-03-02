@@ -10,9 +10,9 @@ FROM   Payment
 WHERE  PaymentTypeID = -- Using the = means that the RH side must be a single value
      -- Assuming that every PaymentTypeDescription will be UNIQUE,
      -- the following subquery will return a single column and a single row
-    (SELECT PaymentTypeID
-     FROM   PaymentType
-     WHERE  PaymentTypeDescription = 'cash')
+	(SELECT PaymentTypeID
+	 FROM   PaymentType
+	 WHERE  PaymentTypeDescription = 'cash')
 -- Here is the Inner Join version of the above
 SELECT PaymentDate, Amount
 FROM   Payment P
@@ -23,8 +23,17 @@ WHERE  PaymentTypeDescription = 'cash'
 
 --2. Select The Student ID's of all the students that are in the 'Association of Computing Machinery' club
 -- TODO: Student Answer Here
+SELECT  StudentID
+FROM    Activity
+WHERE   ClubId = 
+        (SELECT ClubId
+         FROM   Club 
+         WHERE  ClubName = 'Association of Computing Machinery')  
 
 -- 2.b. Select the names of all the students in the 'Association of Computing Machinery' club. Use a subquery for your answer. When you make your answer, ensure the outmost query only uses the Student table in its FROM clause.
+SELECT  FirstName + ' ' + LastName AS 'Student'
+FROM    Student
+WHERE   StudentID IN (SELECT StudentID FROM Activity WHERE ClubID = (SELECT ClubID FROM Club WHERE ClubName = 'Association of Computing Machinery')) 
 
 --3. Select All the staff full names for staff that have taught a course.
 SELECT FirstName + ' ' + LastName AS 'Staff'
@@ -41,6 +50,9 @@ FROM Staff
 
 --4. Select All the staff full names that taught DMIT172.
 -- TODO: Student Answer Here
+SELECT  FirstName + ' ' + LastName AS 'Staff'
+FROM    Staff
+WHERE   StaffID IN (SELECT StaffID FROM Registration WHERE CourseId = (SELECT CourseId FROM Course WHERE CourseId = 'DMIT101'))
 
 
 --5. Select All the staff full names of staff that have never taught a course
@@ -111,6 +123,7 @@ WHERE City = 'Edm'
 -- 9. What is the avg mark for each of the students from Edm? Display their StudentID and avg(mark)
 -- TODO: Student Answer Here...
 
+        
 -- 10. Which student(s) have the highest average mark? Hint - This can only be done by a subquery.
 -- TODO: Student Answer Here...
 
